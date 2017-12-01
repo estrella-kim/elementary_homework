@@ -4,9 +4,9 @@ module.exports = {
 
     for(i = 0; i < array.length; i++) {
         if( max[criteria] > array[i][criteria]){
-            return max[criteria];
+            return max;
         }
-        max = array[i]np;
+        max = array[i];
     }
     return max;
   }

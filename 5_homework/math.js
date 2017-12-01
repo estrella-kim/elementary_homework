@@ -1,47 +1,49 @@
-module.exports = function sum(array) {
-    var length = array.length;
-
-    return (array[0]+array[length-1])*(length/2);
-}
-function max() {
-
-}
-
-function min() {
-
-}
-
-function countIf(array, target) {
-    var number = 0;
-
-    for( i=0; i < array.length; i++) {
-        if( array[i] == target){
-            number++;
+module.exports = {
+    sum : function(array){
+        var sum = 0;
+        for(i = 0; i < array.length; i++ ) {
+            sum += array[i];
         }
-    }
-    return number;
-}
-
-function sumIfOver(array, criteria) {
-    for( i=0; i < array.length; i++){
-        if(array[i] < criteria){
-            array.pop();
+        return sum;
+    },
+    max : function(args){
+        var max = args[0];
+        if(typeof args[0] == array){
+            var array = args[0];
+            var max = array[0];
         }
-    }
-    return sum(array);
-}
-
-function sumIfUnder(array, criteria) {
-    for(i = 0; i < array.length; i++){
-        if(array[i] > criteria){
-            array.pop();
+        for(i= 0; i < args[i]; i++){
         }
+
+    },
+    min : function(){
+    },
+    countIf : function(array, target){
+        var number = 0;
+
+        for( i=0; i < array.length; i++) {
+            if( array[i] == target){
+                number++;
+            }
+        }
+        return number;
+    },
+    sumIfOver : function (array, criteria) {
+        var newArray = array.slice();
+        for( i = 0; i < newArray.length; i++ ) {
+            if( newArray[i] < criteria ) {
+                newArray[i] = null;
+            }
+        }
+        return this.sum(newArray);
+    },
+    sumIfUnder : function(array, criteria) {
+        var newArray = array.slice();
+        for(i = 0; i < newArray.length; i++){
+            if(newArray[i] > criteria){
+                newArray[i] = null;
+            }
+        }
+        return this.sum(newArray);
     }
-    return sum(array);
 }
-module.exports = sum;
-module.exports = max;
-module.exports = min;
-module.exports = countIf;
-module.exports = sumIfOver;
-module.exports = sumIfUnder;
