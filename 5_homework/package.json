@@ -1,0 +1,17 @@
+{
+  "name": "5_homework",
+  "version": "1.0.0",
+  "description": "5회차 과제를 위한 디렉토리입니다. ",
+  "main": "_.test.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "author": "estrella",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1"
+  }
+}
