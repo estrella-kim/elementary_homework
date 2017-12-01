@@ -1,5 +1,13 @@
-function find() {
-  console.log(2)
-}
+module.exports = {
+  find : function (array, criteria) {
+    var max = array[0];
 
-module.exports = find;
+    for(i = 0; i < array.length; i++) {
+        if( max[criteria] > array[i][criteria]){
+            return max[criteria];
+        }
+        max = array[i]np;
+    }
+    return max;
+  }
+}
