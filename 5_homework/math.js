@@ -1,49 +1,68 @@
+/**
+ @title : [문제5_2]
+ @author : 김지영
+ @date : 2017-12-02
+ */
 module.exports = {
-    sum : function(array){
-        var sum = 0;
-        for(i = 0; i < array.length; i++ ) {
+    sum : function(numbers){
+        array = numbers instanceof Array ? numbers : arguments;
+        var sum = array[0];
+        for(var i = 1; i < array.length; i++ ) {
             sum += array[i];
-        }
+         }
         return sum;
     },
-    max : function(args){
-        var max = args[0];
-        if(typeof args[0] == array){
-            var array = args[0];
-            var max = array[0];
-        }
-        for(i= 0; i < args[i]; i++){
-        }
+    max : function(numbers){
+        var array = numbers instanceof Array ? numbers : arguments;
+        var max = array[0];
 
+        for(var i= 1; i < array.length; i++) {
+            if (max <= array[i]) {
+                max = array[i];
+            }
+        }
+        return max;
     },
-    min : function(){
+    min : function(numbers){
+        var array = numbers instanceof Array ? numbers : arguments;
+        var min = array[0];
+
+        for(var i= 1; i < array.length; i++) {
+            if(min >= array[i]){
+                min = array[i];
+            }
+        }
+        return min;
     },
-    countIf : function(array, target){
+    countIf : function(arr, target) {
+        //function(arr: array, target: string)
+        //타입스크릡트를 다룰 때 array인지 string인지 명시하는 게 중요하다.
         var number = 0;
 
-        for( i=0; i < array.length; i++) {
-            if( array[i] == target){
+        for(var i=0; i < arr.length; i++) {
+            if( arr[i] == target){
                 number++;
             }
         }
         return number;
     },
-    sumIfOver : function (array, criteria) {
-        var newArray = array.slice();
-        for( i = 0; i < newArray.length; i++ ) {
-            if( newArray[i] < criteria ) {
-                newArray[i] = null;
+    sumIfOver : function (arr, criteria) {
+        var total = 0;
+        for(var i = 0; i < arr.length; i++){
+            if(arr[i] >= criteria){
+                total += arr[i];
             }
         }
-        return this.sum(newArray);
+        return total;
+        // var newArray = arr.slice();
+        //
+        // for(var i = 0; i < newArray.length; i++ ) {
+        //     newArray[i] = newArray[i] < criteria ? 0 : newArray[i];
+        // }
+        // return this.sum(newArray);
     },
-    sumIfUnder : function(array, criteria) {
-        var newArray = array.slice();
-        for(i = 0; i < newArray.length; i++){
-            if(newArray[i] > criteria){
-                newArray[i] = null;
-            }
-        }
-        return this.sum(newArray);
+    sumIfUnder : function(numbers, criteria) {
+        var criteria = 0;
+        for(var i = 0;  i++; )
     }
 }
