@@ -7,19 +7,23 @@ class Watch extends React.Component{
         this.state = {
             presentTime : new Date().toLocaleTimeString()
         }
+        this.continue = setInterval( () =>{
+            this.setState((state) => {
+                state.presentTime =  new Date().toLocaleTimeString()
+                return state.presentTime;
+            })
+        }, 1000)
     }
     play() {
-        this.setState((state) => {
-            state.presentTime += 'PM';
-            setInterval(function() {
+        this.continue = setInterval( () =>{
+            this.setState((state) => {
                 state.presentTime =  new Date().toLocaleTimeString()
-            }, 1000)
-        }, console.log('success'))
+                return state.presentTime;
+            })
+        }, 1000)
     }
     stop() {
-        this.setState(() => {
-            clearInterval(this.play);
-        })
+        clearInterval(this.continue)
     }
 
     render() {

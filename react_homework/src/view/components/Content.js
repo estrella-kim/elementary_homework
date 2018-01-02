@@ -7,6 +7,10 @@ function Content() {
         <div className ="content">
             컨텐트 영역입니다.
             <Watch/>
+            <Watch/>
+            <Watch/>
+            <Watch/>
+            <Watch/>
         </div>
     )
 }
