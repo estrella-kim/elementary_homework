@@ -8,26 +8,27 @@ class Watch extends React.Component{
             presentTime : new Date().toLocaleTimeString(),
             color : 'rgb('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+')'
         }
-        this.continue = setInterval( () =>{
-            this.setState((state) => {
-                state.presentTime =  new Date().toLocaleTimeString();
-                state.color = 'rgb('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+')';
-                return state;
-            })
-        }, 1000)
-        console.log(this.state.test)
+        this.play();
+        this.clicked = true;
     }
     play() {
-        this.continue = setInterval( () =>{
-            this.setState((state) => {
-                state.presentTime =  new Date().toLocaleTimeString()
-                state.color = 'rgb('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+')'
-                return state;
-            })
-        }, 1000)
+        if(!this.clicked){
+            this.continue = setInterval( () =>{
+                this.setState((state) => {
+                    state.presentTime =  new Date().toLocaleTimeString();
+                    state.color = 'rgba('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+','+ Math.random()+')';
+                    return state;
+                })
+            }, 1000)
+            this.clicked = true;
+        }
+        return;
     }
     stop() {
-        clearInterval(this.continue)
+        if(!!this.clicked){
+            clearInterval(this.continue);
+            this.clicked = false;
+        }
     }
 
     render() {
@@ -37,7 +38,7 @@ class Watch extends React.Component{
                     { this.state.presentTime }
                 </div>
                 <span className = "watch-controller">
-                    <button type="button" className="play" onClick={() => this.play()} >play</button>
+                    <button type="button" className="play" onClick={() => this.play()}>play</button>
                     <button type="button" className="stop" onClick={() => this.stop()}>stop</button>
                 </span>
             </div>
