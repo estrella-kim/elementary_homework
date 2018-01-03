@@ -4,30 +4,28 @@ import '../../css/watch.css';
 class Watch extends React.Component{
     constructor() {
         super();
-        this.state = {
+        this.state = this.initialize();
+        this.play();
+        this.clicked = true;
+    }
+    initialize() {
+        return {
             presentTime : new Date().toLocaleTimeString(),
             color : 'rgb('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+')'
         }
-        this.play();
-        this.clicked = true;
     }
     play() {
         if(!this.clicked){
             this.continue = setInterval( () =>{
-                this.setState((state) => {
-                    state.presentTime =  new Date().toLocaleTimeString();
-                    state.color = 'rgba('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+','+ Math.random()+')';
-                    return state;
-                })
+                this.setState((state) => this.initialize())
             }, 1000)
-            this.clicked = true;
+            this.clicked = !this.clicked;
         }
-        return;
     }
     stop() {
         if(!!this.clicked){
             clearInterval(this.continue);
-            this.clicked = false;
+            this.clicked = !this.clicked;
         }
     }
 
