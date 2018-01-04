@@ -17,7 +17,7 @@ class Watch extends React.Component{
     play() {
         if(!this.clicked){
             this.continue = setInterval( () =>{
-                this.setState((state) => this.initialize())
+                this.setState(() => this.initialize())
             }, 1000)
             this.clicked = !this.clicked;
         }
@@ -31,12 +31,12 @@ class Watch extends React.Component{
 
     render() {
         return (
-            <div className ="watch" style={{ backgroundColor: this.state.color }}>
+            <div className ="watch" style={{ color: this.state.color }}>
                 <div className ="watch-view">
                     { this.state.presentTime }
                 </div>
                 <span className = "watch-controller">
-                    <button type="button" className="play" onClick={() => this.play()}>play</button>
+                    <button type="button" className="play" onClick={() => this.play()}> play</button>
                     <button type="button" className="stop" onClick={() => this.stop()}>stop</button>
                 </span>
             </div>
