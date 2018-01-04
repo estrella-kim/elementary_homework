@@ -4,31 +4,30 @@ import '../../css/watch.css';
 class Watch extends React.Component{
     constructor() {
         super();
-        this.state = this.initialize();
-        this.play();
-        this.clicked = true;
-    }
-    initialize() {
-        return {
+        this.state = {
             presentTime : new Date().toLocaleTimeString(),
-            color : 'rgb('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+')'
+            color : 'rgb('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+')',
+            play : true
         }
+        this.watch();
     }
-    play() {
-        if(!this.clicked){
+    watch() {
+        if(this.state.play){
             this.continue = setInterval( () =>{
-                this.setState(() => this.initialize())
+                this.setState((state) => {
+                    state.presentTime = new Date().toLocaleTimeString();
+                    state.color = 'rgb('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+')';
+                    return state;
+                })
             }, 1000)
-            this.clicked = !this.clicked;
-        }
-    }
-    stop() {
-        if(!!this.clicked){
+        }else{
             clearInterval(this.continue);
-            this.clicked = !this.clicked;
         }
+        this.setState((state) => {
+            state.play = !state.play;
+            return state.play;
+        })
     }
-
     render() {
         return (
             <div className ="watch" style={{ color: this.state.color }}>
@@ -36,8 +35,9 @@ class Watch extends React.Component{
                     { this.state.presentTime }
                 </div>
                 <span className = "watch-controller">
-                    <button type="button" className="play" onClick={() => this.play()}> play</button>
-                    <button type="button" className="stop" onClick={() => this.stop()}>stop</button>
+                     <button type="button" className="play" onClick={() => this.watch()}>
+                         { !!this.state.play ? 'begin' : 'stop'}
+                     </button>
                 </span>
             </div>
         )
