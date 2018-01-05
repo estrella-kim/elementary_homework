@@ -17,6 +17,7 @@ class Watch extends React.Component{
                 this.setState((state) => {
                     state.presentTime = new Date().toLocaleTimeString();
                     state.color = 'rgb('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+')';
+                    state.play = false;
                     return state;
                 })
             }, 1000)
