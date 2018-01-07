@@ -4,25 +4,21 @@ import '../../css/watch.css';
 class Time extends React.Component{
     constructor() {
         super();
-        this.state = {
+        this.state = this.setTime();
+    }
+    setTime () {
+        return{
             presentTime : new Date().toLocaleTimeString(),
-            color : 'rgb('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+')',
-            play : false
+            color : 'rgb('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+')'
         }
     }
-    beginInerval() {
+    beginTime() {
         this.continue = setInterval( () =>{
-            this.setState((state) => {
-                return{
-                    presentTime : new Date().toLocaleTimeString(),
-                    color : 'rgb('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+')'
-                }
-            })
+            this.setState((state) => this.setTime())
         }, 1000)
     }
-
     componentDidMount(){
-        this.beginInerval();
+        this.beginTime();
     }
 
     watch() {
@@ -32,7 +28,7 @@ class Time extends React.Component{
             }
         })
         if(this.state.play){
-           this.beginInerval();
+           this.beginTime();
         }else{
             clearInterval(this.continue);
         }
