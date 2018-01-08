@@ -1,3 +1,4 @@
+var randomColor = require('src/util/random_util/randomColor');
 import React from 'react';
 import '../../css/watch.css';
 
@@ -6,7 +7,7 @@ class Watch extends React.Component{
         super();
         this.state = {
             presentTime : new Date().toLocaleTimeString(),
-            color : 'rgb('+ Math.ceil(Math.random() * 257) +',' + Math.ceil(Math.random() * 257) +','+ Math.ceil(Math.random() * 257)+')',
+            color : randomColor(0, 255),
             play : true
         }
         this.watch();
