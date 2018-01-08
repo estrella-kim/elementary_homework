@@ -12,13 +12,13 @@ class Time extends React.Component{
     componentDidMount () {
         this.beginTime();
     }
-    //this 가 찍는건 time 을 객체로 반환해주는데, {굳이 한 과정을 추가하는 것보다ㅏ} time class에서 setTime을 선언.
+    //this 가 찍는건 time 을 객체로 반환해주는데, {굳이 한 과정을 추가하는 것보다ㅏ} time class(타입은 함수)에서 정적메소드로 setTime을 선언한다. 공통적으로 쓰이기때문에 정적메소드로 빼놓아도 된다.
     static setTime () {
         return {
             presentTime : new Date().toLocaleTimeString(),
             color : randomColor() //따로 빼기
         }
-    }
+    } //es6에서 정적메소드는 클래스의 인스턴스로는 호출될 수 없다.
     beginTime () {
         this.continue = setInterval( () => {
             this.setState(Time.setTime()); //react는 새로운 객체가0 계속 생성된다..  10분동안 한다면 600개의 관계없는 객체가 생성된다. 만일 더이상 react에서 더이상 참조하지 않으면 브라우저의 가비지 컬렉ㅌ터가 해당 객체를 삭제해줄것이다.
