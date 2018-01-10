@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/watch.css';
-import randomColor from '../../util/random_util/randomColor';
+import {randomColor} from '../../util/random_util';
 
 class Time extends React.Component{
     constructor () {
