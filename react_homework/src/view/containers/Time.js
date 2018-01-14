@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/watch.css';
-import {randomColor} from '../../util/random_util';
+import  {default as random}  from '../../util/random';
 
 class Time extends React.Component{
     constructor () {
@@ -16,7 +16,7 @@ class Time extends React.Component{
     static setTime () {
         return {
             presentTime : new Date().toLocaleTimeString(),
-            color : randomColor() //따로 빼기
+            color : random.color() //따로 빼기
         }
     } //es6에서 정적메소드는 클래스의 인스턴스로는 호출될 수 없다.
     beginTime () {
